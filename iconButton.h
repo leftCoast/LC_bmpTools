@@ -14,7 +14,7 @@
 // 9/19 - Doing my own icons now. (So there's suddenly a lot of them!) I think I'll take 
 // this piece of code and twist it into a multi purpose, icon based, clickable UI thing.
 //
-// 11/21 - OK. bmpObj is your "everything using a .bmp file" thing. Use that to base
+// 11/21 - OK. bmpObj is now your "everything using a .bmp file" thing. Use that to base
 // drawing on. THIS is going back to being used for doing square icon based buttons. OK?
 // Fine!
 

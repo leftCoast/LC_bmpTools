@@ -2,18 +2,13 @@
 #define bmpFlasher_h
 
 
-// bmpFlasher contains base classes for a that bmpFlasher holds
-// and swaps two .bmp files.
-
-
 #include <flasher.h>
 #include <bmpObj.h>
 
-// *****************************************************
-//                     bmpFlasher
-// *****************************************************
 
-// bmpFlasher swaps between two bitmaps instead of a colored rectangle.
+// This extends the original flasher class from swapping between two colors, to swapping
+// between two .bmp images. See the flasher class for more public methods to use for this.
+
 
 class bmpFlasher :  public flasher {
     
