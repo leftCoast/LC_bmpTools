@@ -21,7 +21,7 @@ void	bmpMask::readFromBMP(const char* filePath) {
 
 	alphaFile = new bmpImage(filePath);							// Have a go at creating the .bmp file object.
 	if (alphaFile) {													// If we can create the .bmp file object..
-		if (alphaFile->openDocFile(FILE_READ)) {				// If we can open the .bmp file..
+		if (alphaFile->openDocFile(fRead)) {					// If we can open the .bmp file..
 			width = alphaFile->getWidth();						// We read and save the width.
 			height = alphaFile->getHeight();						// We read and save the height.
 			numBytes = calcBuffSize();								// Calculate our buff size.
@@ -154,7 +154,7 @@ colorObj bmpObj::greyscale(colorObj* inColor) {
 void	bmpObj::drawSelf(void) {
 
 	colorObj	aColor;
-	if (openDocFile(FILE_READ)) {
+	if (openDocFile(fRead)) {
 		if(mMask) {
 			for(int ty=0;ty<drawObj::height;ty++) {
 				for(int tx=0;tx<drawObj::width;tx++) {
