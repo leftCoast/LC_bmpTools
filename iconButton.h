@@ -17,6 +17,9 @@
 // 11/21 - OK. bmpObj is now your "everything using a .bmp file" thing. Use that to base
 // drawing on. THIS is going back to being used for doing square icon based buttons. OK?
 // Fine!
+//
+// 1/26 - Move setActive() up here. So everyone can do it.
+//
 
 
 class iconButton :	public bmpObj {
@@ -26,6 +29,8 @@ class iconButton :	public bmpObj {
 	virtual	~iconButton(void);
 	
 	virtual	void	setEventSet(eventSet inEventSet);
+	virtual	void	setActive(bool trueFalse);
+	virtual	bool	getActive(void); 
 };
 
 

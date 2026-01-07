@@ -18,3 +18,16 @@ void iconButton::setEventSet(eventSet inEventSet) {
 	setNeedRefresh();
 	bmpObj::setEventSet(inEventSet);
 }
+
+
+void iconButton::setActive(bool trueFalse) {
+				
+	if (trueFalse) {
+		setEventSet(touchLift);
+	} else {
+		setEventSet(noEvents);
+	}
+}
+
+
+bool iconButton::getActive(void) { return !(getEventSet()==noEvents); }
