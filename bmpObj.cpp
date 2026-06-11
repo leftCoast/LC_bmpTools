@@ -19,25 +19,27 @@ void	bmpMask::readFromBMP(const char* filePath) {
 	colorObj		aColor;
 	byte			alpha;
 
-	alphaFile = new bmpImage(filePath);							// Have a go at creating the .bmp file object.
-	if (alphaFile) {													// If we can create the .bmp file object..
-		if (alphaFile->openDocFile(fRead)) {					// If we can open the .bmp file..
-			width = alphaFile->getWidth();						// We read and save the width.
-			height = alphaFile->getHeight();						// We read and save the height.
-			numBytes = calcBuffSize();								// Calculate our buff size.
-			if (resizeBuff(numBytes,&maskBits)) {				// If we can allocate the bit buffer..
-				for(int y=0;y<height;y++) {						// For every line..
-					for(int x=0;x<width;x++) {						// For every pixel in that line..
-						aColor = alphaFile->getPixel(x,y);		// Grab the pixel.
-						alpha = aColor.getGreyscale();			// Calculate the brightness of the pixel.
-						writeBit(x,y,alpha<128);					// Set the bitmap bit accordingly.
-					}
-				}
-			}
-			alphaFile->closeDocFile();									// All done, clean up shop.
-		}
-		delete(alphaFile);												// Recycle the .bmp file object.
-	}
+	if (filePath) {													// Don't put up with their leftover NULL pointers!
+		alphaFile = new bmpImage(filePath);						// Have a go at creating the .bmp file object.
+		if (alphaFile) {												// If we can create the .bmp file object..
+			if (alphaFile->openDocFile(fRead)) {				// If we can open the .bmp file..
+				width = alphaFile->getWidth();					// We read and save the width.
+				height = alphaFile->getHeight();					// We read and save the height.
+				numBytes = calcBuffSize();							// Calculate our buff size.
+				if (resizeBuff(numBytes,&maskBits)) {			// If we can allocate the bit buffer..
+					for(int y=0;y<height;y++) {					// For every line..
+						for(int x=0;x<width;x++) {					// For every pixel in that line..
+							aColor = alphaFile->getPixel(x,y);	// Grab the pixel.
+							alpha = aColor.getGreyscale();		// Calculate the brightness of the pixel.
+							writeBit(x,y,alpha<128);				// Set the bitmap bit accordingly.
+						}													//
+					}														//
+				}															//
+				alphaFile->closeDocFile();							// All done, clean up shop.
+			}																//
+			delete(alphaFile);										// Recycle the .bmp file object.
+		}																	//
+	}																		//
 }
 
 
@@ -144,8 +146,10 @@ colorObj bmpObj::greyscale(colorObj* inColor) {
 	byte		greyVal;
 	colorObj	aColor;
 	
-	greyVal = inColor->getGreyscale();
-	aColor.setColor(greyVal,greyVal,greyVal);
+	if (inColor) {
+		greyVal = inColor->getGreyscale();
+		aColor.setColor(greyVal,greyVal,greyVal);
+	}
 	return aColor;
 }
 
