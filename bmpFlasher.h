@@ -19,6 +19,7 @@ class bmpFlasher :  public flasher {
 
 				void	setup(const char* onBmpPath,const char* offBmpPath);
 	virtual	void	drawSelf(void);
+				
 
 				bool		mReady;
             bmpObj*	mOnBmp;

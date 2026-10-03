@@ -1,5 +1,5 @@
-#include "bmpFlasher.h"
-
+#include <bmpFlasher.h>
+#include <debug.h>
 
 bmpFlasher::bmpFlasher(int inX,int inY, int width,int height,const char* onBmp,const char* offBmp)
 	: flasher(inX,inY,width,height,&black) { 

@@ -158,6 +158,7 @@ colorObj bmpObj::greyscale(colorObj* inColor) {
 void	bmpObj::drawSelf(void) {
 
 	colorObj	aColor;
+	
 	if (openDocFile(fRead)) {
 		if(mMask) {
 			for(int ty=0;ty<drawObj::height;ty++) {
@@ -181,5 +182,6 @@ void	bmpObj::drawSelf(void) {
 		closeDocFile();
 	} else {
 		drawObj::drawSelf();
+		
 	}
 }
