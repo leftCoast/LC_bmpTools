@@ -1,6 +1,8 @@
 #include <bmpObj.h>
 #include <resizeBuff.h>
-#include "Arduino.h"
+#include <debug.h>
+
+
 
 // *************************************
 //     	A .bmp file mask class
@@ -160,17 +162,30 @@ void	bmpObj::drawSelf(void) {
 	colorObj	aColor;
 	
 	if (openDocFile(fRead)) {
+		//Serial.println("OPEND FILE!");
 		if(mMask) {
 			for(int ty=0;ty<drawObj::height;ty++) {
 				for(int tx=0;tx<drawObj::width;tx++) {
 					if (mMask->checkPixel(tx,ty)) {
+						//Serial.print("Drawing");
+						//Serial.print("  tx : ");
+						//Serial.print(tx);
+						//Serial.print("  ty : ");
+						//Serial.println(ty);
 						aColor = getPixel(tx+offsetX,ty+offsetY);
 						if (greyOut) aColor = greyscale(&aColor);
 						screen->drawPixel(tx+x,ty+y,&aColor);
+					} else {
+						//Serial.println("Masked!");
+						//Serial.print("  tx : ");
+						//Serial.print(tx);
+						//Serial.print("  ty : ");
+						//Serial.println(ty);
 					} 	
 				}
 			}
 		} else {
+			//Serial.println("No mask!");
 			for(int ty=0;ty<drawObj::height;ty++) {
 				for(int tx=0;tx<drawObj::width;tx++) {
 					aColor = getPixel(tx+offsetX,ty+offsetY);
