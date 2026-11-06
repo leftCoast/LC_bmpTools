@@ -165,23 +165,10 @@ void	bmpObj::drawSelf(void) {
 		if(mMask) {
 			for(int ty=0;ty<drawObj::height;ty++) {
 				for(int tx=0;tx<drawObj::width;tx++) {
-					if (mMask->checkPixel(tx+x,ty+y)) {
-						/*
-						Serial.print("Drawing");
-						Serial.print("  tx : ");
-						Serial.print(tx);
-						Serial.print("  ty : ");
-						Serial.println(ty);
-						*/
+					if (mMask->checkPixel(tx,ty)) {
 						aColor = getPixel(tx+offsetX,ty+offsetY);
 						if (greyOut) aColor = greyscale(&aColor);
 						screen->drawPixel(tx+x,ty+y,&aColor);
-					} else {
-						//Serial.println("Masked!");
-						//Serial.print("  tx : ");
-						//Serial.print(tx);
-						//Serial.print("  ty : ");
-						//Serial.println(ty);
 					} 	
 				}
 			}
